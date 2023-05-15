@@ -2,7 +2,7 @@ package uebung2
 
 import scala.annotation.tailrec
 
-object Fibo {
+object  Fibo {
   // no variables
   // no while loops
 
