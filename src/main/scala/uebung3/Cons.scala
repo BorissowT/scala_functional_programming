@@ -1,10 +1,15 @@
 package uebung3
 
 trait IntList{
+  def head:Int
+  def tail:IntList
+
   def isEmpty:Boolean
   def contains(e: Int):Boolean
   def get(i: Int): Int
   def delete(e:Int):IntList
+  def prefix(beforeList: IntList): IntList
+  def prepend(x:Int): IntList
 }
 
 /**
@@ -31,7 +36,16 @@ class Cons (val head: Int, val tail:IntList) extends IntList{
     if(e==head)tail
     else new Cons(head,this.tail.delete(e))
   }
+
+  override def prefix(beforeList: IntList): IntList = {
+    if(this.isEmpty) beforeList
+    else if(beforeList.isEmpty) this
+    else if (beforeList.tail != Empty) new Cons(beforeList.head, this.prefix(beforeList.tail))
+    else new Cons(beforeList.head, this).prefix(beforeList.delete(beforeList.head))
+  }
 }
+
+
 
 object Empty extends IntList {
 
@@ -45,6 +59,12 @@ object Empty extends IntList {
   override def get(i: Int): Int = -1
 
   override def delete(e: Int): IntList = ???
+
+  override def prefix(beforeList: IntList): IntList = ???
+
+  override def head: Int = ???
+
+  override def tail: IntList = ???
 }
 
 
@@ -52,8 +72,9 @@ object App {
 
   def main(args: Array[String]): Unit = {
 
-    val x = new Cons(4, new Cons(7, new Cons(3, Empty)))
-    val y = x.delete(7)
-    println("hel")
+    val x = new Cons(9, Empty).prepend(3).prepend(1)
+    val y = new Cons(5, Empty).prepend(5).prepend(6).prepend(2)
+    val xy = y.prefix(x)
+    println("stop")
   }
 }
