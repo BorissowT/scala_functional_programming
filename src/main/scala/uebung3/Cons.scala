@@ -10,7 +10,7 @@ trait IntList{
   def delete(e:Int):IntList
   def prefix(beforeList: IntList): IntList
   def prepend(x:Int): IntList
-  def traverse(): IntList
+  def flip(): IntList
 }
 
 /**
@@ -45,10 +45,11 @@ class Cons (val head: Int, val tail:IntList) extends IntList{
     }
   }
 
-  override def traverse(): IntList = {
+
+  override def flip(): IntList = {
     this.tail.isEmpty match {
       case true => this
-      case false => new Cons(this.head, Empty).prefix(this.tail.traverse())
+      case false => new Cons(this.head, Empty).prefix(this.tail.flip())
     }
   }
 }
@@ -72,7 +73,7 @@ object Empty extends IntList {
 
   override def tail: IntList = ???
 
-  override def traverse(): IntList = ???
+  override def flip(): IntList = ???
 }
 
 
@@ -80,7 +81,7 @@ object App {
 
   def main(args: Array[String]): Unit = {
 
-    val x = new Cons(3, Empty).prepend(2).prepend(1).traverse()
+    val x = new Cons(3, Empty).prepend(2).prepend(1).flip()
     println("stop")
   }
 }
