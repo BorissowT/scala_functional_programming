@@ -38,7 +38,7 @@ class Cons (val head: Int, val tail:IntList) extends IntList{
     else new Cons(head,this.tail.delete(e))
   }
 
-  // TODO is it possible to solve without prefix?
+
 
   override def prefix(beforeList: IntList): IntList = {
     beforeList.isEmpty match {
@@ -49,6 +49,7 @@ class Cons (val head: Int, val tail:IntList) extends IntList{
 
 
   override def flip(): IntList = {
+    // TODO is it possible to solve without prefix?
     this.tail.isEmpty match {
       case true => this
       case false => new Cons(this.head, Empty).prefix(this.tail.flip())
