@@ -38,6 +38,8 @@ class Cons (val head: Int, val tail:IntList) extends IntList{
     else new Cons(head,this.tail.delete(e))
   }
 
+  // TODO is it possible to solve without prefix?
+
   override def prefix(beforeList: IntList): IntList = {
     beforeList.isEmpty match {
       case true => this
