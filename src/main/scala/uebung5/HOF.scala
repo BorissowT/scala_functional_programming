@@ -1,7 +1,5 @@
 package uebung5
 
-import scala.annotation.tailrec
-
 
 object HOF {
 
@@ -27,7 +25,7 @@ object HOF {
 
   def main(args: Array[String]): Unit = {
 
-    println("summe: " + fold(List(1,2,3,4), 0, (x,y)=>x+y))
-
+    println("summe: " + fold(List(1,2,3,4), 0, (x:Int,y:Int)=>x+y));
+    println("summe: " + List(1,2,3,4).reduceLeft((x,y)=>x+y))
   }
 }

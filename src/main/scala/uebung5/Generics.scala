@@ -1,7 +1,5 @@
 package uebung5
 
-import scala.annotation.tailrec
-
 object Generics {
 
   //@tailrec
@@ -17,8 +15,8 @@ object Generics {
 
   def main(args: Array[String]): Unit = {
 
-    println("summe: " + fold(List(1,2,3,4), 0, (x,y)=>x+y))
-
+    //println("summe: " + fold(List(1,2,3,4), 0.0, (x: Int,y:Float) =>x+y))
+    println("summe: " + List(1,2,3,4).reduceLeft((x,y)=>x+y))
   }
 
 }
