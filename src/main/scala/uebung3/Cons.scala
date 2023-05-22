@@ -84,7 +84,6 @@ object App {
 
   def main(args: Array[String]): Unit = {
 
-    val x = new Cons(3, Empty).prepend(2).prepend(1).flip()
-    println("stop")
+    (x: Int) => x*x*x
   }
 }
