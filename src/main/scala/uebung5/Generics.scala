@@ -2,17 +2,7 @@ package uebung5
 
 import scala.annotation.tailrec
 
-
-object HOF {
-
-  def filter(I:List[Int], pred: Int => Boolean): List[Int] ={
-    I match {
-      case Nil => Nil
-      case x::xs =>
-        if(pred(x))x::filter(xs, pred) // if (true) return x else do not return x 
-                    else filter(xs, pred)
-    }
-  }
+object Generics {
 
   //@tailrec
   def fold[In, Out](I:List[In], base: Out, func: (In, Out) => Out): Out ={
@@ -20,7 +10,7 @@ object HOF {
       case Nil => base
       case x::xs =>
         func(x, fold(xs, base, func))
-        //fold(xs, func(base:In, x), func)
+      //fold(xs, func(base:In, x), func)
 
     }
   }
@@ -30,4 +20,5 @@ object HOF {
     println("summe: " + fold(List(1,2,3,4), 0, (x,y)=>x+y))
 
   }
+
 }
